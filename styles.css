@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    --ink: #202b2a;
+    --muted: #697775;
+    --accent: #177a68;
+
+    min-height: 100vh;
+    margin: 0;
+    padding: clamp(24px, 7vw, 88px) 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 760px);
+    grid-template-rows: auto auto minmax(280px, 1fr) auto;
+    align-content: center;
+    justify-content: center;
+    gap: 18px;
+    color: var(--ink);
+    font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    background:
+        radial-gradient(ellipse at 15% 10%, rgb(214 234 224 / 70%), transparent 34%),
+        linear-gradient(145deg, #f4f7f3 0%, #e9f0ed 100%);
+}
+
+body::before {
+    grid-row: 1;
+    content: "Contador de palavras";
+    color: var(--ink);
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0;
+}
+
+body::after {
+    grid-row: 2;
+    content: "Transforme suas ideias em texto, uma palavra de cada vez.";
+    margin-top: -10px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#Texto {
+    grid-row: 3;
+    width: 100%;
+    min-height: 320px;
+    padding: 24px;
+    border: 1px solid #d6e0dc;
+    border-radius: 12px;
+    outline: none;
+    background: rgb(255 255 255 / 92%);
+    box-shadow: 0 18px 50px rgb(37 67 57 / 8%);
+    color: var(--ink);
+    font: inherit;
+    font-size: 17px;
+    line-height: 1.7;
+    resize: vertical;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+#Texto:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgb(23 122 104 / 12%), 0 18px 50px rgb(37 67 57 / 8%);
+}
+
+#contador {
+    grid-row: 4;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0;
+    color: var(--accent);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+#contador::after {
+    content: "palavras";
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 520px) {
+    body {
+        padding: 32px 18px;
+        gap: 16px;
+    }
+
+    body::after {
+        font-size: 14px;
+    }
+
+    #Texto {
+        min-height: 280px;
+        padding: 18px;
+        font-size: 16px;
+    }
+}
